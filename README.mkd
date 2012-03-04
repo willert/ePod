@@ -1,30 +1,21 @@
-_mist_ is intended to help with the quasi-deployment of uninstalled
-(or uninstallable) Perl applications. The most common applications for
-this are [Catalyst][cat] applications, but it might prove useful in other
-scenarios, too.
+_ePod_ intends to be fully functional perldoc browser for _emacs-w3m_
 
-_mist_ works with [Dist::Zilla][dzil] and [cpanm] to create and maintain a
-stable CPAN mirror in your project path that only includes the
-needed CPAN or DarkPAN distributions.
+Currently the _emacs_ side of things is very bare bone and serves only as a proof
+of concept. It is unlikely that I can flesh it out on my own, I really suck at elisp
+and my use-case for it is working as I need it (e.g. I don't use _emacs-w3m_ for anything
+at all so I can get away with totally messing up its configuration). So patches and/or co-maint
+requests are more than welcome.
 
-The benefits of this approach are:
+INSTALL (Ubuntu Linux)
 
-1. You always have a stable set of known-good modules available.
+*after a fresh w3m intallation for emacs*
 
-2. These modules can easily be installed in a _local::lib_ container
-   and won't interfere with any other applications on this machine
-	 or the system perl installation.
+    git clone git@github.com:willert/ePod.git
+    cd ePod 
+		./mpan-install
+    sudo ln -s `pwd`/cgi-bin/epod.cgi /usr/lib/w3m/cgi-bin/
+		echo 'perldoc:	file:/$LIB/epod.cgi?%s' > ~/.w3m/urimethodmap
 
-3. _mist_ creates a self-contained executable based on [cpanm] so
-   no system-wide installation whatsoever (not even _local::lib_)
-   is required on target machines.
+Then load lisp/epod.el in your .emacs.d/init.el or whatever is your place to do so
+and kiss you normal _w3m_ goodbye ;) 
 
-4. Your applications dependencies can easily be put under version
-	 control with all the benefits that brings.
-
-_mist_ is in the earliest stages of development so any input is more
-than welcome.
-
-[dzil]: http://dzil.org/ "Dist::Zilla homepage"
-[cpanm]: http://xrl.us/cpanm "Download App::cpanminus"
-[cat]: http://www.catalystframework.org/ "Catalyst Framework"  
