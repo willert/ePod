@@ -12,9 +12,9 @@ INSTALL (Ubuntu Linux)
 
     git clone git@github.com:willert/ePod.git
     cd ePod 
-		./mpan-install
+    ./mpan-install
     sudo ln -s `pwd`/cgi-bin/epod.cgi /usr/lib/w3m/cgi-bin/
-		echo 'perldoc:	file:/$LIB/epod.cgi?%s' > ~/.w3m/urimethodmap
+    echo 'perldoc:  file:/$LIB/epod.cgi?%s' > ~/.w3m/urimethodmap
 
 Then load lisp/epod.el in your .emacs.d/init.el or whatever is your place to do so
 and kiss you normal _w3m_ goodbye ;) 
