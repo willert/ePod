@@ -76,10 +76,12 @@
   (define-key map "\M-i" 'w3m-save-image)
   (define-key map "M" 'w3m-view-url-with-external-browser)
   (define-key map "n" 'w3m-view-next-page)
+  (define-key map "\M-n" 'w3m-view-next-page)
   (define-key map "N" 'w3m-namazu)
   (define-key map "o" 'w3m-history)
   (define-key map "O" 'w3m-db-history)
   (define-key map "p" 'w3m-view-previous-page)
+  (define-key map "\M-p" 'w3m-view-previous-page)
   (define-key map "q" 'w3m-close-window)
   (define-key map "Q" 'w3m-quit)
   (define-key map "R" 'w3m-reload-this-page)
@@ -107,19 +109,32 @@
   (setq epod/w3m-map map)
   )
 
-(add-hook 'w3m-mode-hook '(lambda () (use-local-map epod/w3m-map)))
+(defvar epod-local-lib-dirs nil "Project or local lib directories to search.");
+(defvar epod-module-history nil "History list of perl modules entered in the minibuffer.")
 
+(defun epod/shell-command-to-string (&rest cmd)
+  (replace-regexp-in-string
+   "\r?\n$" ""
+   (shell-command-to-string (concat (mapconcat 'identity cmd " ") " 2>/dev/null" ))))
 
-(defun epod-module-at-point ()
-  ""
-  (interactive)
-  (let ((url (mapconcat (lambda (e) e)
-                        (list*
-                         (format "perldoc:module?name=%s" (cperl-word-at-point))
-                         (mapcar
-                          (lambda (e) (format "locallib=%s" e))
-                          epod-local-lib-dirs
-                          )) "&")))
+(defun epod-perldoc ( module )
+  "Display POD for module, defaulting to `cperl-word-at-point'."
+  (interactive
+   (list (read-string
+          (format "Perl module [%s]: " (cperl-word-at-point))
+          nil 'epod-module-history (cperl-word-at-point))))
+  (add-hook 'w3m-mode-hook '(lambda () (use-local-map epod/w3m-map)) t t)
+  (let ((url
+         (mapconcat (lambda (e) e)
+                    (list*
+                     (format "perldoc:module?name=%s" module)
+                     (mapcar
+                      (lambda (e) (if e (format "include=%s" e)))
+                      (let ((mist-libs (epod/shell-command-to-string "mist lib_paths")))
+                        (if (> (length mist-libs) 0)
+                            (split-string mist-libs)
+                          ))))
+                    "&")))
     (w3m-goto-url url)))
 
 

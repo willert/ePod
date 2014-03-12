@@ -1,0 +1,58 @@
+Allow-Packages-Only-Once: 0
+Allow-Suspicious-Names: 0
+Columns: package name, version, path
+Description: Package names for my private CPAN
+Disallow-Alpha-Versions: 0
+File: 02packages.details.txt
+Intended-For: My private CPAN
+Last-Updated: Wed, 12 Mar 2014 20:41:06 GMT
+Line-Count: 0
+URL: http://example.com/MyCPAN/modules/02packages.details.txt
+Written-By: /home/willert/Devel/mist/script/mist using CPAN::PackageDetails0.26
+
+Capture::Tiny                       0.19  D/DA/DAGOLDEN/Capture-Tiny-0.19.tar.gz
+Path::Class                         0.33  K/KW/KWILLIAMS/Path-Class-0.33.tar.gz
+Path::Class::Dir                    0.33  K/KW/KWILLIAMS/Path-Class-0.33.tar.gz
+Path::Class::Entity                 0.33  K/KW/KWILLIAMS/Path-Class-0.33.tar.gz
+Path::Class::File                   0.33  K/KW/KWILLIAMS/Path-Class-0.33.tar.gz
+Pod::Perldoc                        3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::BaseTo                3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::GetOptsOO             3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToANSI                3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToChecker             3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToMan                 3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToNroff               3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToPod                 3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToRtf                 3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToTerm                3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToText                3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToTk                  3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Perldoc::ToXml                 3.23  M/MA/MALLEN/Pod-Perldoc-3.23.tar.gz
+Pod::Simple                         3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::BlackBox               3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Checker                3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Debug                  3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::DumpAsText             3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::DumpAsXML              3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::HTML                   3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::HTMLBatch              3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::HTMLLegacy             5.01  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::LinkSection            3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Methody                3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Progress               3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::PullParser             3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::PullParserEndToken     3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::PullParserStartToken   3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::PullParserTextToken    3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::PullParserToken        3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::RTF                    3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Search                 3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::SimpleTree             3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Text                   3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::TextContent            3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::TiedOutFH              3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::Transcode              3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::TranscodeDumb          3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::TranscodeSmart         3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::XHTML                  3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz
+Pod::Simple::XMLOutStream           3.20  D/DW/DWHEELER/Pod-Simple-3.20.tar.gz

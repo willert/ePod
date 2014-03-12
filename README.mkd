@@ -6,16 +6,33 @@ and my use-case for it is working as I need it (e.g. I don't use _emacs-w3m_ for
 at all so I can get away with totally messing up its configuration). So patches and/or co-maint
 requests are more than welcome.
 
-INSTALL (Ubuntu Linux)
+INSTALL
 
-*after a fresh w3m intallation for emacs*
+First, make sure you have the following lines in your ~/.w3m/config file:
+
+    urimethodmap ~/.w3m/urimethodmap
+    cgi_bin ~/.w3m/cgi-bin
+
+Checkout ePod and install it at all dependencies:
 
     git clone git@github.com:willert/ePod.git
     cd ePod 
     ./mpan-install
-    sudo ln -s `pwd`/cgi-bin/epod.cgi /usr/lib/w3m/cgi-bin/
-    echo 'perldoc:  file:/$LIB/epod.cgi?%s' > ~/.w3m/urimethodmap
+
+Then link it into w3m's cgi-bin directory:
+
+		mkdir -p ~/.w3m/cgi-bin/
+    ln -s `pwd`/perl5/libexec/cmd-wrapper.bash ~/.w3m/cgi-bin/epod.cgi
+
+And finally register it as the URI handler for perldoc:
+
+    (
+		  cat ~/.w3m/urimethodmap  | grep -v '^perldoc:' # all but the perldoc handler
+			echo '' # ensure final newline
+			echo 'perldoc: file:/cgi-bin/epod.cgi?%s'
+	  ) > ~/.w3m/urimethodmap
+
 
 Then load lisp/epod.el in your .emacs.d/init.el or whatever is your place to do so
-and kiss you normal _w3m_ goodbye ;) 
+and you should have a nice perldoc browser in your emacs.
 

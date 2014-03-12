@@ -1,9 +1,22 @@
 #!/usr/bin/env perl
 
+use 5.010;
+
+use strict;
+use warnings;
+
+use English;
+use File::Spec;
+
 our $log;
 
 BEGIN {
-  open( $log, '>>', '/home/willert/scratch/epod.log' );
+  my $login = getlogin || getpwuid( $< ) || "kilroy";
+  my $logfile = File::Spec->catfile(
+    File::Spec->tmpdir, sprintf( 'epod_%s.log', $login )
+  );
+
+  open( $log, '>>', $logfile );
 
   $SIG{__DIE__} = sub{
     say $log @_;
@@ -23,7 +36,7 @@ use base 'Pod::Simple::HTML';
 
 use 5.010;
 
-our @local_libs;
+our @include;
 our $module;
 
 our $DEBUG = 2;
@@ -52,7 +65,7 @@ sub do_pod_link {
   if ( $link->attr('to')) {
 
     $pd_link = sprintf( 'perldoc:module?name=%s', $link->attr('to') );
-    $pd_link .= "&locallib=$_" for @local_libs;
+    $pd_link .= "&include=$_" for @include;
     $pd_link .= sprintf( '#%s', $link->attr('section'))
       if $link->attr('section');
   } else {
@@ -83,16 +96,11 @@ my $doc = $module || $ARGV[0];
 
 printf $log "Scanning for %s\n", $doc;
 
-
 my ( $pod, $err ) = capture {
   local @INC = @INC;
+  push @INC, $_ for @include;
 
-  push @INC, dir( $Bin )->parent->subdir('contrib')->stringify;
-
-  require local::lib;
-  local::lib->import( $_ ) for @local_libs;
-
-  eval{ Pod::Perldoc->run( args => [ '-u', $doc ] ) }
+  eval{ Pod::Perldoc->run( args => [ '-oPod', $doc ] ) }
 };
 
 die "Can't find docs for: $doc\nError was:$err\n" unless $pod;
@@ -102,4 +110,4 @@ $p->output_string( \ my $html );
 $p->index( 1 );
 $p->parse_string_document( $pod );
 
-print $html;
+print "<!DOCTYPE html>\n\n$html\n\n";
