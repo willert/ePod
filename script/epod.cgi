@@ -19,5 +19,9 @@ push @ePod::include, $u->query_param( 'include' )
 
 $ePod::module = $u->query_param( 'name' );
 
-require "$RealBin/epod.pl";
+eval{ require "$RealBin/epod.pl" };
+if ( my $err = $@ ) {
+  print "No documentation for ${ePod::module} found<hr /><pre>$err</pre>";
+}
+
 exit 0;
